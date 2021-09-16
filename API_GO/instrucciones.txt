@@ -1,5 +1,63 @@
 Para compilar dockerfile
-docker build -t golangapi2 .
+docker build -t golangapi .
 
 Para correr el container
-docker run -p 3000:3000 -tid golangapi
+docker run -p 3000:3000 -tid golangap
+
+
+
+FROM golang:latest
+
+RUN mkdir /apiGolang
+# Make ssh dir
+RUN mkdir /home/.ssh && \
+    chmod 700 /home/.ssh
+
+COPY github_key /home/.ssh/auth_keys
+
+RUN  chmod 600 /home/.ssh/auth_keys
+
+RUN eval $(ssh-agent) && \
+    ssh-keyscan -H github.com >> chmod 600 /home/.ssh/auth_keys
+#RUN cd /apiGolang && git clone --branch juanpa git@github.com:Sopes1/Proyecto1.git
+
+
+#WORKDIR /apiGolang
+
+#RUN export GO111MODULE=on
+#RUN go get -u github.com/gorilla/mux
+#RUN go mod init quickstart
+#RUN go get go.mongodb.org/mongo-driver
+#RUN go get git@github.com:Sopes1/Proyecto1/API_GO/main
+
+
+#RUN cd /apiGolang/Proyecto1/API_GO && go build
+
+#EXPOSE 3000
+
+#ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO" ]
+
+----------------------------------
+
+
+FROM golang:latest
+
+RUN mkdir /apiGolang
+
+RUN export GO111MODULE=on
+RUN go get -u github.com/gorilla/mux
+RUN go mod init quickstart
+RUN go get -v -u go.mongodb.org/mongo-driver/mongo
+
+COPY github_key .
+RUN eval $(ssh-agent) && \
+    ssh-add github_key && \
+    ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts &&
+
+RUN cd /apiGolang && git clone --branch juanpa git@github.com:Sopes1/Proyecto1.git
+
+RUN cd /apiGolang/Proyecto1/API_GO && go build
+
+EXPOSE 3000
+
+ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO/main" ]
