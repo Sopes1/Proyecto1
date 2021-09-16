@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"reflect"
 	"strconv"
 	"strings"
 	"time"
@@ -40,55 +39,20 @@ type Data struct {
 	Downvotes  int      `json:"downvotes"`
 }
 
-type Response struct {
-	Correct bool
-}
-
-func publicarMysql(w http.ResponseWriter, req *http.Request) {
-	//Devolver en formato json
-	w.Header().Set("Content-Type", "application/json")
-	//Decodificar el body
-	decoder := json.NewDecoder(req.Body)
-	var data Data
-	//Asignar la data del body al struct data
-	err := decoder.Decode(&data)
-	if err != nil {
-		panic(err)
-	}
-	log.Println(data)
-	//Se ingreso correctamente a la base de datos?
-	response := newDataMySQL(data)
-	//Response
-	json.NewEncoder(w).Encode(response)
-}
-
-func publicarMongo(w http.ResponseWriter, req *http.Request) {
-	//Devolver en formato json
-	w.Header().Set("Content-Type", "application/json")
-	//Decodificar el body
-	decoder := json.NewDecoder(req.Body)
-	var data Data
-	//Asignar la data del body al struct data
-	err := decoder.Decode(&data)
-	if err != nil {
-		panic(err)
-	}
-	log.Println(data)
-	//Se ingreso correctamente a la base de datos?
-	response := newDataMongo(data)
-	//Response
-	json.NewEncoder(w).Encode(response)
+type RequestInfo struct {
+	Nombre      string  //Nombre de la base de datos de donde es la informacion
+	Correctos   int     //Numero de peticiones correctas
+	Incorrectos int     //Numero de peticiones incorrectas
+	Tiempo      float64 //Tiempo que tardo en ejecutarse la peticion
 }
 
 func main() {
 
 	router := mux.NewRouter()
-
-	//Ruta para insertar en mongo
-	router.HandleFunc("/publicar/Mongo", publicarMongo).Methods("POST")
 	//Ruta para insertar en mysql
-	router.HandleFunc("/publicar/Mysql", publicarMysql).Methods("POST")
-
+	router.HandleFunc("/golang/publicar/mysql", insertDataMysql).Methods("POST")
+	//Ruta para insertar en mongo
+	router.HandleFunc("/golang/publicar/mongo", insertDataMongo).Methods("POST")
 	//Iniciando API
 	log.Fatal(http.ListenAndServe(":3000", router))
 
@@ -97,36 +61,24 @@ func main() {
 //Si la funcion logra ingresar data devielve true, de lo contrario devuelve false
 func newDataMongo(data Data) bool {
 	clientOptions := options.Client().ApplyURI(URI)
-	fmt.Println("ClientOptopm TYPE:", reflect.TypeOf(clientOptions))
 
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	if err != nil {
 		fmt.Println("Mongo.connect() ERROR: ", err)
 		return false
 	}
-	ctx, cancel := context.WithTimeout(context.Background(), 15*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	col := client.Database("Proyecto1Sopes").Collection("Comentarios")
-	fmt.Println("Collection Type: ", reflect.TypeOf(col))
 
-	fmt.Println("oneDoc Type: ", reflect.TypeOf(data))
-
-	result, insertErr := col.InsertOne(ctx, data)
+	_, insertErr := col.InsertOne(ctx, data)
 	if insertErr != nil {
 		fmt.Println("InsertONE Error:", insertErr)
 		defer cancel()
 		return false
 	} else {
-
-		fmt.Println("InsertOne() result type: ", reflect.TypeOf(result))
-		fmt.Println("InsertOne() api result type: ", result)
-
-		newID := result.InsertedID
-		fmt.Println("InsertedOne(), newID", newID)
-		fmt.Println("InsertedOne(), newID type:", reflect.TypeOf(newID))
 		defer cancel()
 		return true
-
 	}
 }
 
@@ -154,13 +106,79 @@ func newDataMySQL(data Data) bool {
 
 	}
 
-	insert, err := db.Query(`INSERT INTO comentario(nombre_comentario, comentario, hashtag, fecha_comentario, upvotes_comentario, down_comentario)
-							VALUES ('` + data.Nombre + `','` + data.Comentario + `','` + nHashtags + `',STR_TO_DATE('` + nFecha + `', '%d-%m-%Y'),` + strconv.Itoa(data.Downvotes) + `,` + strconv.Itoa(data.Upvotes) + `)`)
+	insert, err := db.Query(`INSERT INTO comentarios(nombre, comentario, hashtags, fecha, upvotes, downvotes)
+							VALUES ('` + data.Nombre + `','` + data.Comentario + `','` + nHashtags + `',STR_TO_DATE('` + nFecha + `', '%d-%m-%Y'),` + strconv.Itoa(data.Upvotes) + `,` + strconv.Itoa(data.Downvotes) + `)`)
 
 	if err != nil {
+		fmt.Print(insert)
 		fmt.Println(err.Error())
 		return false
 	}
 	defer insert.Close()
 	return true
+}
+
+//Manda todas las peticiones a la base de datos Mysql
+func insertDataMysql(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
+	fmt.Println("Insertando Data En Mysql")
+
+	var correctos int
+	var incorrectos int
+	var dato []Data
+
+	//Devolver en formato json
+	w.Header().Set("Content-Type", "application/json")
+	decoder := json.NewDecoder(req.Body)
+	err := decoder.Decode(&dato)
+
+	if err != nil {
+		panic(err)
+	}
+
+	start := time.Now()
+
+	for _, data := range dato {
+		response := newDataMySQL(data)
+
+		if response == true {
+			correctos = correctos + 1
+		} else {
+			incorrectos = incorrectos + 1
+		}
+	}
+	fmt.Println("Termina Mysql")
+	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
+	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()})
+}
+
+//Manda todas las peticiones a la base de datos Mongo
+func insertDataMongo(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
+	fmt.Println("Insertando Data en Mongo")
+	var correctos int
+	var incorrectos int
+	var dato []Data
+
+	//Devolver en formato json
+	w.Header().Set("Content-Type", "application/json")
+	decoder := json.NewDecoder(req.Body)
+	err := decoder.Decode(&dato)
+
+	if err != nil {
+		panic(err)
+	}
+
+	start := time.Now()
+
+	for _, data := range dato {
+		response := newDataMongo(data)
+
+		if response == true {
+			correctos = correctos + 1
+		} else {
+			incorrectos = incorrectos + 1
+		}
+	}
+	fmt.Println("Termina Mongo")
+	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
+	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()})
 }
