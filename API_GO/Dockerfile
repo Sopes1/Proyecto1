@@ -1,20 +1,46 @@
 FROM golang:latest
 
 RUN mkdir /apiGolang
-WORKDIR /apiGolang
 
+# COPY github_key .
+# RUN eval $(ssh-agent) && \
+#     ssh-add github_key && \
+#     ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+#RUN git clone git@github.com:Sopes1/Proyecto1.git /apiGolang
+
+
+RUN cd /apiGolang && git clone --branch juanpa https://JuanPa09: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@github.com/Sopes1/Proyecto1.git
+
+WORKDIR /apiGolang
+#Para exportar modulos de go
 RUN export GO111MODULE=on
-RUN go mod init quickstart
-RUN go mod tidy
 RUN go get -u github.com/gorilla/mux
 RUN go get go.mongodb.org/mongo-driver
 RUN go get -u github.com/go-sql-driver/mysql
-RUN cd /apiGolang && git clone --branch juanpa https://JuanPa09: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@github.com/Sopes1/Proyecto1.git
 
+#Expuesto en el puerto 3000
 EXPOSE 3000
 
-RUN cd /apiGolang/Proyecto1/API_GO && go run main.go
+#Compilar go
+RUN cd /apiGolang/Proyecto1/API_GO && go build
+
+#Nombre del archivo que tiene compilado go
+ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO/quickstart" ]
 
 
 
-##ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO/main" ]
+
+#WORKDIR /apiGolang
+
+#RUN export GO111MODULE=on
+#RUN go get -u github.com/gorilla/mux
+#RUN go mod init quickstart
+#RUN go get go.mongodb.org/mongo-driver
+#RUN go get git@github.com:Sopes1/Proyecto1/API_GO/main
+
+
+#RUN cd /apiGolang/Proyecto1/API_GO && go build
+
+#EXPOSE 3000
+
+#ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO" ]

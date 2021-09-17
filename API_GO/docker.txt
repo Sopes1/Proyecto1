@@ -1,0 +1,6 @@
+
+## Descargar imagen
+docker pull docker.io/juanpa99/golangapi:latest
+
+## Correr imagen
+docker run -d -p 3000:3000 juanpa99/golangapi

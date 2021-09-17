@@ -21,6 +21,8 @@ RUN eval $(ssh-agent) && \
     ssh-keyscan -H github.com >> chmod 600 /home/.ssh/auth_keys
 #RUN cd /apiGolang && git clone --branch juanpa git@github.com:Sopes1/Proyecto1.git
 
+https://JuanPa09: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@github.com/Sopes1/Proyecto1.git
+
 
 #WORKDIR /apiGolang
 

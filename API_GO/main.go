@@ -106,7 +106,7 @@ func newDataMySQL(data Data) bool {
 
 	}
 
-	insert, err := db.Query(`INSERT INTO comentarios(nombre, comentario, hashtags, fecha, upvotes, downvotes)
+	insert, err := db.Query(`INSERT INTO comentarios(nombre_comentario, comentario, hashtag, fecha_comentario, upvotes_comentario, down_comentario)
 							VALUES ('` + data.Nombre + `','` + data.Comentario + `','` + nHashtags + `',STR_TO_DATE('` + nFecha + `', '%d-%m-%Y'),` + strconv.Itoa(data.Upvotes) + `,` + strconv.Itoa(data.Downvotes) + `)`)
 
 	if err != nil {

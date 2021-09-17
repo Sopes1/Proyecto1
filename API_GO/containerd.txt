@@ -1,0 +1,35 @@
+## Pasos para container d
+
+1. sudo apt-get update
+2. sudo apt-get install wget
+3. sudo apt-get install golang
+4. sudo apt-get install runc
+5. export PATH=$PATH:/usr/local/go/bin
+
+## Verificar que se haya instalado go
+6. go version
+
+7. sudo apt-get install git
+8. wget https://github.com/containerd/containerd/releases/download/v1.5.4/containerd-1.5.4-linux-amd64.tar.gz
+9. tar xvf containerd-1.5.4-linux-amd64.tar.gz
+
+10. cd /bin
+11. sudo mv ctr /usr/bin
+
+## Dejar corriendo el server de containerd
+12. sudo setsid ./containerd
+
+#################ABRIR OTRA VENTANTA#######################
+
+## Ver imagenes de containerd
+13. sudo ctr i
+14. sudo ctr i list
+
+## Traer una imagen
+15. sudo ctr i pull docker.io/[nombreImagen]:[tag]
+
+## Crear contenedor a partir de la imagen
+
+16. sudo ctr i list
+17. sudo ctr run --rm --net-host [imagen]:[version] [nombreContainer] 
+
