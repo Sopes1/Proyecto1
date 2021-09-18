@@ -11,7 +11,7 @@ router.get('/getcpu',async function(req,res,next){
     res.send({procesos:data[0],cpu:data[1]})
 })
 
-module.get('/getram',async function(req,res,next){
+router.get('/getram',async function(req,res,next){
     let dataResponse = fs.readFileSync(ruta_modulo_ram,'utf8');
     let data = dataResponse.split('\n')
     console.log(dataResponse)
