@@ -1,0 +1,2 @@
+[global.databases.rocket_app]
+url = "mysql://root:1234@104.198.201.11/sopesP1"
