@@ -1,0 +1,44 @@
+#### Ver modulos almacenaddos
+$ /lib/modules/[nombre_kernel]
+
+#### Ver la version del kernel
+$ uname -r
+
+#### Revisar los modulos instalados, esto listara 
+#### todos los modulos instalados en el kernel
+lsmod
+
+#### Revisar o buscar un modeilo
+lsmod | grep "[nombre_modulo]"
+
+#### Instalar el modulo con el comando insmod
+$ sudo insmod [nombre_modulo].ko
+
+#### Revisar los logs de los modulos
+$ sudo dmesg
+
+#### Revisar el documento generado, cada vez que lo revisemos se reescribira (leer modulo)
+$ cat /proc/[nombre_modulo]
+
+#### Eliminar el modulo
+$ sudo rmmod "[nombre_modulo]"
+
+
+############# Proceso de compilacion #######################
+1. sudo apt-get install linux-headers-$(uname -r)
+2. sudo apt-get install build-essential
+3. make
+4. sudo insmod [nombre].ko
+
+############# Ejecutarlo #####################
+1. cd /proc
+2. cat timestamps
+
+
+####### Ver cantidad de procesos corriendo ##############
+
+ps -e | wc -l
+
+
+
+
