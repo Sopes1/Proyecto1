@@ -13,10 +13,10 @@ register.setDefaultLabels({
 
 client.collectDefaultMetrics({register})
 
-app.get('/metrics' , (req , res)=>{
+app.get('/metrics' , async(req , res)=>{
 
     res.setHeader('Content-Type',register.contentType)
-    res.end(await prometheus.register.metrics())
+    res.end(await register.metrics())
 
 })
 
