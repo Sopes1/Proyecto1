@@ -12,11 +12,41 @@ use mongodb::bson::{doc, Bson};
 use mongodb::{error::Error};
 use std::collections::HashMap;
 use std::env;
+use dotenv::dotenv;
+use mysql::*;
+use mysql::prelude::*;
+use mysql::prelude::Queryable;
 
-#[get("/")]
-pub fn index() -> &'static str {
-    "Application successfully started!"
-}
+/*#[post("/rust/publicar/mysql", format = "application/json" ,data = "<arreglo_comentarios>")]
+pub fn index(
+    arreglo_comentarios: Json<Vec<User>>,
+) -> Result<String>  {
+
+    let url = env::var("DATABASE_URL").expect("missing environment variable MONGODB_URL"); 
+    let opts = Opts::from_url(url)?;
+    let pool = Pool::new(opts)?;
+    let mut conn = pool.get_conn()?;
+
+    let payments = vec![
+    Payment { customer_id: 1, amount: 2, account_name: None },
+    Payment { customer_id: 3, amount: 4, account_name: Some("foo".into()) },
+    Payment { customer_id: 5, amount: 6, account_name: None },
+    Payment { customer_id: 7, amount: 8, account_name: None },
+    Payment { customer_id: 9, amount: 10, account_name: Some("bar".into()) },
+    ];
+    conn.exec_batch(
+        r"INSERT INTO comentarios (nombre_comentario, comentario)
+          VALUES (:nombre_comentario, :comentario)",
+          arreglo_comentarios.iter().map(|p| params! {
+            "nombre_comentario" => &p.nombre,
+            "comentario" => &p.comentario,
+        })
+    )?;
+  
+   /* println!("{}",conn_string );*/
+   Ok(format!("url {} ", url))
+}*/
+
 
 #[post("/rust/publicar/mysql", format = "application/json" ,data = "<arreglo_comentarios>")]
 pub fn create_mysql(
@@ -107,6 +137,12 @@ pub fn create_mysql(user: Json<User>) -> Result<Json<String>, Debug<io::Error>> 
     // NOTE: In a real application, we'd use `rocket_contrib::json::Json`.
     Ok(Json(serde_json::to_string(&user).expect("valid JSON")))
 }*/
+#[derive(Debug, PartialEq, Eq)]
+struct Payment {
+    customer_id: i32,
+    amount: i32,
+    account_name: Option<String>,
+}
 
 #[derive( Serialize,Deserialize,Debug)]
 pub struct User {

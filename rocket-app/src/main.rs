@@ -30,7 +30,7 @@ fn main() {
         .mount(
             "/",
             routes![
-                routes::index,
+                //routes::index,
                 routes::create_mysql,
                 routes::create_mongodb
             ],
