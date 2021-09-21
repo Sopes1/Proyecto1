@@ -16,7 +16,7 @@ client.collectDefaultMetrics({register})
 app.get('/metrics' , (req , res)=>{
 
     res.setHeader('Content-Type',register.contentType)
-    res.end(register.metrics())
+    res.end(await prometheus.register.metrics())
 
 })
 
