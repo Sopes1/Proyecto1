@@ -28,9 +28,13 @@ const all_process = new client.Gauge({
 })
 
 async function collectMetrics(){
-    console.log('Hello from here')
-    const cpuData = fs.readFileSync('/proc/cpumodule','utf8').split('\n');
-    all_process.labels('procesos').set(cpuData[0])
+    try{
+        console.log('Hello from here')
+        const cpuData = fs.readFileSync('/proc/cpumodule','utf8').split('\n');
+        all_process.labels('procesos').set(cpuData[0])
+    }catch (e){
+        console.log(e)
+    }
 }
 
 
