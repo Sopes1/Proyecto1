@@ -22,7 +22,8 @@ app.use("/kernel",require('./routes/kernel'));
 
 /** */
 
-client.collectDefaultMetrics()
+//client.collectDefaultMetrics()
+const register = new client.Registry()
 
 const all_process = new client.Gauge({
     name: 'Processes_Running',
@@ -40,7 +41,10 @@ async function collectMetrics(){
     }
 }
 
+register.registerMetric(all_process)
+
 app.use('/metrics',(req,res)=>{
+    res.setHeader('Content-Type', register.contentType)
     res.send(client.register.metrics())
 })
 
