@@ -37,6 +37,9 @@ async function collectMetrics(){
     }
 }
 
+app.use('/metrics',(req,res)=>{
+    res.send(client.register.metrics())
+})
 
 /** */
 
