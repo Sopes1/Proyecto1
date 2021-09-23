@@ -31,7 +31,7 @@ async function collectMetrics(){
     try{
         console.log('Hello from here')
         const cpuData = fs.readFileSync('/proc/cpumodule','utf8').split('\n');
-        all_process.labels('procesos').set(cpuData[0])
+        all_process.labels('procesos').set(parseInt(cpuData[0]))
     }catch (e){
         console.log(e)
     }
