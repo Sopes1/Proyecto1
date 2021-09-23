@@ -21,6 +21,9 @@ app.use("/kernel",require('./routes/kernel'));
 
 
 /** */
+
+client.collectDefaultMetrics()
+
 const all_process = new client.Gauge({
     name: 'Processes_Running',
     help: 'Numero total de procesos corriendo',
