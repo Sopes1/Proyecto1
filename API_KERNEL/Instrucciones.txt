@@ -1,1 +1,37 @@
-;
+##### Node Exporter
+
+	### Descargar 
+	1. sudo wget https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz
+	2. tar xfvz node_exporter-1.2.2.linux-amd64.tar.gz
+
+	### Correr
+	1. ./node_exporter
+
+
+###### Prometheus
+
+	### Creacion yml
+
+		### Ruta
+		/etc/prometheus
+		### Archivo
+		prometheus.yml
+
+	### Ejecucion
+	1. docker run --rm -p 9090:9090 -v `pwd`/prometheus.yml:/etc/prometheus/prometheus.yml   prom/prometheus:v2.30.0
+	
+###### Grafana
+	
+	### Creacion yml
+		
+		### Ruta
+		~/
+		### Archivo
+		datasources.yml
+	
+	### Ejecucion
+	1. sudo docker run --rm -p 3000:3000   -e GF_AUTH_DISABLE_LOGIN_FORM=true   -e GF_AUTH_ANONYMOUS_ENABLED=true   -e GF_AUTH_ANONYMOUS_ORG_ROLE=Admin   -v `pwd`/datasources.yml:/etc/grafana/provisioning/datasources/dataresources.yml   grafana/grafana:8.1.4
+		
+	
+
+

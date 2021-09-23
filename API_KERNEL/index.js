@@ -17,6 +17,7 @@ app.get('/' , (req , res)=>{
 })
 app.use("/kernel",require('./routes/kernel'));
 
+
 app.listen(port,()=>{
-    console.log('Servidor escuchando en el puerto' + port)
+    console.log('Servidor escuchando en el puerto ' + port)
 })

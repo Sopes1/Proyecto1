@@ -13,9 +13,11 @@
   "author": "Juan Pablo Ardon Lopez",
   "license": "ISC",
   "dependencies": {
+    "client": "0.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "prom": "0.0.3"
   }
 }
