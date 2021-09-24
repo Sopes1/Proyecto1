@@ -43,9 +43,9 @@ async function collectMetrics(){
 
 register.registerMetric(all_process)
 
-app.use('/metrics',(req,res)=>{
+app.use('/metrics',async(req,res)=>{
     res.setHeader('Content-Type', register.contentType)
-    res.send(client.register.metrics())
+    res.end(await register.metrics())
 })
 
 /** */
