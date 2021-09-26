@@ -6,46 +6,8 @@ use chrono::NaiveDate;
 use crate::models::{InsertableComentario, Comentario};
 use crate::schema;
 use crate::DbConn;
-use mongodb::sync::Client;
-use mongodb::sync::Collection;
-use mongodb::bson::{doc, Bson};
-use mongodb::{error::Error};
 use std::collections::HashMap;
 use std::env;
-use dotenv::dotenv;
-use mysql::*;
-use mysql::prelude::*;
-use mysql::prelude::Queryable;
-
-/*#[post("/rust/publicar/mysql", format = "application/json" ,data = "<arreglo_comentarios>")]
-pub fn index(
-    arreglo_comentarios: Json<Vec<User>>,
-) -> Result<String>  {
-
-    let url = env::var("DATABASE_URL").expect("missing environment variable MONGODB_URL"); 
-    let opts = Opts::from_url(url)?;
-    let pool = Pool::new(opts)?;
-    let mut conn = pool.get_conn()?;
-
-    let payments = vec![
-    Payment { customer_id: 1, amount: 2, account_name: None },
-    Payment { customer_id: 3, amount: 4, account_name: Some("foo".into()) },
-    Payment { customer_id: 5, amount: 6, account_name: None },
-    Payment { customer_id: 7, amount: 8, account_name: None },
-    Payment { customer_id: 9, amount: 10, account_name: Some("bar".into()) },
-    ];
-    conn.exec_batch(
-        r"INSERT INTO comentarios (nombre_comentario, comentario)
-          VALUES (:nombre_comentario, :comentario)",
-          arreglo_comentarios.iter().map(|p| params! {
-            "nombre_comentario" => &p.nombre,
-            "comentario" => &p.comentario,
-        })
-    )?;
-  
-   /* println!("{}",conn_string );*/
-   Ok(format!("url {} ", url))
-}*/
 
 
 #[post("/rust/publicar/mysql", format = "application/json" ,data = "<arreglo_comentarios>")]
@@ -61,15 +23,18 @@ pub fn create_mysql(
     let start = Instant::now();
     for arreglo in arreglo_comentarios.0.iter(){
         let mut hashtags = "".to_string();
-        let last = arreglo.hashtags.last().unwrap();
-        for x in arreglo.hashtags.iter(){
-            if x == last{
-                hashtags.push_str(x);
-            }else{
-                hashtags.push_str(x);
-                hashtags.push_str(",");
+        if arreglo.hashtags.len() >0 {
+            let last = arreglo.hashtags.last().unwrap();
+            for x in arreglo.hashtags.iter(){
+                if x == last{
+                    hashtags.push_str(x);
+                }else{
+                    hashtags.push_str(x);
+                    hashtags.push_str(",");
             }
         }
+        }
+        
         let fecha:Vec<&str>=arreglo.fecha.split("/").collect();
         let guion: String = "- ".to_owned();
         let newFecha = format!("{}-{}-{}", fecha[2], fecha[1],fecha[0]);
@@ -93,6 +58,7 @@ pub fn create_mysql(
 
         let duration = start.elapsed().as_secs();
         println!("{:?}", duration);
+      
         Json(Response { correctos:correctos,incorrectos:incorrectos, tiempo: duration.to_string() })
 
 }
@@ -102,15 +68,16 @@ pub fn create_mysql(
 pub fn create_mongodb(
     arreglo_comentarios: Json<Vec<User>>,
 )-> Json<Response> {
-    let conn_string = env::var("MONGODB_URL").expect("missing environment variable MONGODB_URL"); 
+    let mut correctos = 0;
+    let mut incorrectos = 0;
+   /* let conn_string = env::var("MONGODB_URL").expect("missing environment variable MONGODB_URL"); 
     let todos_db_name = env::var("MONGODB_DATABASE").expect("missing environment variable MONGODB_DATABASE");
     let todos_collection_name = env::var("MONGODB_COLLECTION").expect("missing environment variable MONGODB_COLLECTION");
     let mongo_client = Client::with_uri_str(&*conn_string).expect("failed to create client");
     let todo_coll = mongo_client.database(&todos_db_name).collection(&todos_collection_name);
 
     let tm = TodoManager::new(todo_coll.clone());
-    let mut correctos = 0;
-    let mut incorrectos = 0;
+    
     let start = Instant::now();
     for arreglo in arreglo_comentarios.0.iter(){
         let new_user = User {
@@ -123,26 +90,15 @@ pub fn create_mongodb(
     };
         tm.add_todo(new_user);
     }
-    
+    */
     
     let duration = start.elapsed().as_secs();
     Json(Response { correctos:correctos,incorrectos:incorrectos, tiempo: duration.to_string() })
  
 }
 
-/*
-#[post("/page_view",  data = "<user>")]
-pub fn create_mysql(user: Json<User>) -> Result<Json<String>, Debug<io::Error>> {
-  
-    // NOTE: In a real application, we'd use `rocket_contrib::json::Json`.
-    Ok(Json(serde_json::to_string(&user).expect("valid JSON")))
-}*/
-#[derive(Debug, PartialEq, Eq)]
-struct Payment {
-    customer_id: i32,
-    amount: i32,
-    account_name: Option<String>,
-}
+
+
 
 #[derive( Serialize,Deserialize,Debug)]
 pub struct User {
@@ -178,7 +134,7 @@ struct TodoManager {
     
     return retorno;
 }*/
-impl TodoManager{
+/*impl TodoManager{
     fn new(todo_coll:Collection) -> TodoManager{
 
         TodoManager{coll: todo_coll}
@@ -202,4 +158,4 @@ impl TodoManager{
     }
 
    
-}
+}*/

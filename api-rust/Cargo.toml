@@ -1,0 +1,37 @@
+[package]
+name = "api-rust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.0.0-beta.5"
+actix-web-httpauth = { git = "https://github.com/actix/actix-web-httpauth" }
+chrono = { version = "0.4.10", features = ["serde"] }
+derive_more = "0.99.2"
+diesel = { version = "1.4.2", features = ["mysql","uuidv07", "r2d2", "chrono"] }
+dotenv = "0.15.0"
+futures = "0.3.1"
+r2d2 = "0.8.8"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+actix-service = "1.0.1"
+alcoholic_jwt = "1.0.0"
+reqwest = "0.9.22"
+actix-rt = "2.0.2"
+actix-cors = "0.6.0-beta.2"
+cloud-pubsub = "0.6.0"
+envy          =  "0.4"
+async-std = { version = "1", features = ["attributes", "tokio1"] }
+
+[dependencies.mongodb]
+version = "1.1.1"
+default-features = false
+features = ["sync"]
+
+
+[dependencies.bson]
+version = "1.1.0"
+
