@@ -2,12 +2,11 @@ const {MongoClient} = require('mongodb');
 var dotenv = require('dotenv').config();
 var assert = require('assert');
 const client = new MongoClient(process.env.mongoURI)
+client.connect()
 
 exports.getAll = async(req,res) =>{
-
-
     try{
-        await client.connect();
+        //await client.connect();
         const result = await client.db('Proyecto1Sopes').collection('Comentarios').find({}).toArray(function(err,result){
             if (!err){
                 res.send(result)
@@ -22,7 +21,7 @@ exports.getAll = async(req,res) =>{
 
 exports.totalNoticias = async(req,res)=>{
     try{
-        await client.connect();
+        //await client.connect();
         const result = await client.db('Proyecto1Sopes').collection('Comentarios').find({}).toArray(function(err,result){
             if (!err){
                 return res.send({total: Object.keys(result).length})
@@ -37,7 +36,7 @@ exports.totalNoticias = async(req,res)=>{
 
 exports.totalUpvotes = async(req,res)=>{
     try{
-        await client.connect();
+        //await client.connect();
         const result = await client.db('Proyecto1Sopes').collection('Comentarios').find({}).toArray(function(err,result){
             if (!err){
                 return res.send({total: Object.keys(result).length})
@@ -52,7 +51,7 @@ exports.totalUpvotes = async(req,res)=>{
 
 exports.totales = async(req,res)=>{
     try{
-        await client.connect();
+        //await client.connect();
         const result = await client.db('Proyecto1Sopes').collection('Comentarios').find({}).toArray(function(err,result){
 
             if (!err){
