@@ -59,9 +59,15 @@ type Publisher struct {
 	BD        string
 }
 
+type Health struct {
+	Status int
+}
+
 func main() {
 
 	router := mux.NewRouter()
+	//Ruta para combrobar
+	router.HandleFunc("/", health).Methods("GET")
 	//Ruta para insertar en mysql
 	router.HandleFunc("/golang/publicar/mysql", insertDataMysql).Methods("POST")
 	//Ruta para insertar en mongo
@@ -186,7 +192,7 @@ func newDataMySQL(data Data) bool {
 }
 
 //Manda todas las peticiones a la base de datos Mysql
-func insertDataMysql(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
+func insertDataMysql(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("Insertando Data En Mysql")
 
 	var correctos int
@@ -217,11 +223,11 @@ func insertDataMysql(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
 	publish("{guardados: " + strconv.Itoa(correctos) + ", api: 'golang', tiempoDeCarga: " + fmt.Sprint(tiempo) + ", bd: 'MySQL'}")
 	fmt.Println("Termina Mysql")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
-	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()})
+	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
 }
 
 //Manda todas las peticiones a la base de datos Mongo
-func insertDataMongo(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
+func insertDataMongo(w http.ResponseWriter, req *http.Request) {
 	fmt.Println("Insertando Data en Mongo")
 	var correctos int
 	var incorrectos int
@@ -252,4 +258,8 @@ func insertDataMongo(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
 	fmt.Println("Termina Mongo")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
 	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
+}
+
+func health(w http.ResponseWriter, req *http.Request) {
+	json.NewEncoder(w).Encode(Health{Status: 200})
 }
