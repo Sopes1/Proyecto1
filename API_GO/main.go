@@ -127,7 +127,7 @@ func publish(msg string) error {
 	}
 
 	// El mensaje fue publicado correctamente
-	fmt.Println("Published a message; msg ID: %v\n", id)
+	fmt.Printf("Published a message; msg ID: %v\n", id)
 	return nil
 }
 
