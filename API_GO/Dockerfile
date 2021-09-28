@@ -17,12 +17,17 @@ RUN export GO111MODULE=on
 RUN go get -u github.com/gorilla/mux
 RUN go get go.mongodb.org/mongo-driver
 RUN go get -u github.com/go-sql-driver/mysql
+RUN go get cloud.google.com/go/pubsub
+RUN go get github.com/joho/godotenv
 
 #Expuesto en el puerto 3000
 EXPOSE 3000
 
 #Compilar go
-RUN cd /apiGolang/Proyecto1/API_GO && go build
+RUN cd /apiGolang/Proyecto1/API_GO
+COPY . . 
+ENV GOOGLE_APPLICATION_CREDENTIALS="./key.json"
+RUN go build
 
 #Nombre del archivo que tiene compilado go
 ENTRYPOINT [ "/apiGolang/Proyecto1/API_GO/quickstart" ]

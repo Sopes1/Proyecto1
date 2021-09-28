@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -20,6 +21,11 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
+
+	// Leer variables de entorno
+	"github.com/joho/godotenv"
+	// Libreria de Google PubSub
+	"cloud.google.com/go/pubsub"
 )
 
 //URL para conexion a mongo
@@ -46,6 +52,13 @@ type RequestInfo struct {
 	Tiempo      float64 //Tiempo que tardo en ejecutarse la peticion
 }
 
+type Publisher struct {
+	Guardados int
+	Api       string
+	Tiempo    float64
+	BD        string
+}
+
 func main() {
 
 	router := mux.NewRouter()
@@ -56,6 +69,60 @@ func main() {
 	//Iniciando API
 	log.Fatal(http.ListenAndServe(":3000", router))
 
+}
+
+func goDotEnvVariable(key string) string {
+
+	// Leer el archivo .env ubicado en la carpeta actual
+	err := godotenv.Load(".env")
+
+	// Si existio error leyendo el archivo
+	if err != nil {
+		log.Fatalf("Error cargando las variables de entorno")
+	}
+
+	// Enviar la variable de entorno que se necesita leer
+	return os.Getenv(key)
+}
+
+func publish(msg string) error {
+	// Definimos el ProjectID del proyecto
+	// Este dato lo sacamos de Google Cloud
+	projectID := goDotEnvVariable("PROJECT_ID")
+
+	// Definimos el TopicId del proyecto
+	// Este dato lo sacamos de Google Cloud
+	topicID := goDotEnvVariable("TOPIC_ID")
+
+	// Definimos el contexto en el que ejecutaremos PubSub
+	ctx := context.Background()
+	// Creamos un nuevo cliente
+	client, err := pubsub.NewClient(ctx, projectID)
+	// Si un error ocurrio creando el nuevo cliente, entonces imprimimos un error y salimos
+	if err != nil {
+		fmt.Println("error")
+		return fmt.Errorf("pubsub.NewClient: %v", err)
+	}
+
+	// Obtenemos el topico al que queremos enviar el mensaje
+	t := client.Topic(topicID)
+
+	// Publicamos los datos del mensaje
+	result := t.Publish(ctx, &pubsub.Message{Data: []byte(msg)})
+
+	// Bloquear el contexto hasta que se tenga una respuesta de parte de GooglePubSub
+	id, err := result.Get(ctx)
+
+	// Si hubo un error creando el mensaje, entonces mostrar que existio un error
+	if err != nil {
+		fmt.Println("error:")
+		fmt.Println(err)
+		return fmt.Errorf("Error: %v", err)
+	}
+
+	// El mensaje fue publicado correctamente
+	fmt.Println("Published a message; msg ID: %v\n", id)
+	return nil
 }
 
 //Si la funcion logra ingresar data devielve true, de lo contrario devuelve false
@@ -146,6 +213,8 @@ func insertDataMysql(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
 			incorrectos = incorrectos + 1
 		}
 	}
+	tiempo := time.Since(start).Seconds()
+	publish("{guardados: " + strconv.Itoa(correctos) + ", api: 'golang', tiempoDeCarga: " + fmt.Sprint(tiempo) + ", bd: 'MySQL'}")
 	fmt.Println("Termina Mysql")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
 	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()})
@@ -178,7 +247,9 @@ func insertDataMongo(w http.ResponseWriter, req *http.Request) /*RequestInfo*/ {
 			incorrectos = incorrectos + 1
 		}
 	}
+	tiempo := time.Since(start).Seconds()
+	publish("{guardados: " + strconv.Itoa(correctos) + ", api: 'golang', tiempoDeCarga: " + fmt.Sprint(tiempo) + ", bd: 'CosmosDB'}")
 	fmt.Println("Termina Mongo")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
-	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()})
+	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
 }

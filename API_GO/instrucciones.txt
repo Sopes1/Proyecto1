@@ -2,7 +2,7 @@ Para compilar dockerfile
 docker build -t golangapi .
 
 Para correr el container
-docker run -p 3000:3000 -tid golangap
+docker run -p 3000:3000 -tid golangapi
 
 
 
