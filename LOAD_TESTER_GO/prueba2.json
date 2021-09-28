@@ -3,7 +3,7 @@
       "nombre": "Colorado",
       "comentario": "auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor",
       "fecha": "09/01/2022",
-      "hashtags": "Media Relations, Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 14
     },
@@ -11,7 +11,7 @@
       "nombre": "Perry",
       "comentario": "egestas blandit. Nam nulla magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat",
       "fecha": "14/09/2022",
-      "hashtags": "Sales and Marketing, Asset Management, Tech Support, Accounting",
+      "hashtags": ["soccer","atletismo"],
       "upvotes": 9,
       "downvotes": 14
     },
@@ -19,7 +19,7 @@
       "nombre": "Wing",
       "comentario": "Proin nisl sem, consequat nec, mollis vitae, posuere at, velit. Cras lorem lorem, luctus ut, pellentesque eget,",
       "fecha": "12/09/2021",
-      "hashtags": "Quality Assurance, Legal Department, Customer Service",
+      "hashtags": ["olimpic"],
       "upvotes": 18,
       "downvotes": 16
     },
@@ -27,7 +27,7 @@
       "nombre": "Kieran",
       "comentario": "semper rutrum. Fusce dolor quam, elementum at, egestas a, scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci",
       "fecha": "01/05/2021",
-      "hashtags": "Customer Service",
+      "hashtags": ["run","running"],
       "upvotes": 2,
       "downvotes": 4
     },
@@ -35,7 +35,7 @@
       "nombre": "Alfonso",
       "comentario": "in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tincidunt. Donec vitae erat vel pede blandit",
       "fecha": "22/10/2020",
-      "hashtags": "Research and Development",
+      "hashtags": ["olimpic","olimpiadas"],
       "upvotes": 15,
       "downvotes": 8
     },
@@ -43,7 +43,7 @@
       "nombre": "Cody",
       "comentario": "scelerisque sed, sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis augue",
       "fecha": "10/03/2022",
-      "hashtags": "Payroll, Customer Relations, Research and Development, Media Relations",
+      "hashtags": ["barcelona"],
       "upvotes": 7,
       "downvotes": 2
     },
@@ -51,7 +51,7 @@
       "nombre": "Bradley",
       "comentario": "non leo. Vivamus nibh dolor, nonummy ac,",
       "fecha": "04/08/2021",
-      "hashtags": "Payroll, Media Relations, Sales and Marketing",
+      "hashtags": ["triathlon"],
       "upvotes": 15,
       "downvotes": 9
     },
@@ -59,7 +59,7 @@
       "nombre": "Aurora",
       "comentario": "orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor",
       "fecha": "13/05/2022",
-      "hashtags": "Customer Service",
+      "hashtags": ["palau","football"],
       "upvotes": 16,
       "downvotes": 13
     },
@@ -67,7 +67,7 @@
       "nombre": "Amery",
       "comentario": "malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc",
       "fecha": "03/04/2021",
-      "hashtags": "Payroll, Quality Assurance, Legal Department",
+      "hashtags": ["bici","love","motivacion"],
       "upvotes": 11,
       "downvotes": 5
     },
@@ -75,7 +75,7 @@
       "nombre": "Clare",
       "comentario": "luctus et ultrices posuere cubilia Curae; Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor egestas rhoncus. Proin",
       "fecha": "20/06/2022",
-      "hashtags": "Payroll, Human Resources",
+      "hashtags": ["athlete","olimpiadas","running"],
       "upvotes": 5,
       "downvotes": 18
     },
@@ -83,7 +83,7 @@
       "nombre": "Alfreda",
       "comentario": "sapien molestie orci tincidunt adipiscing. Mauris molestie pharetra nibh. Aliquam ornare, libero at auctor ullamcorper,",
       "fecha": "11/05/2022",
-      "hashtags": "Advertising, Legal Department, Tech Support, Research and Development, Quality Assurance",
+      "hashtags": ["swim","love"],
       "upvotes": 20,
       "downvotes": 7
     },
@@ -91,7 +91,7 @@
       "nombre": "Wynter",
       "comentario": "malesuada augue ut lacus. Nulla tincidunt, neque vitae semper egestas, urna justo faucibus lectus, a sollicitudin orci sem",
       "fecha": "31/08/2022",
-      "hashtags": "Asset Management, Customer Service, Quality Assurance",
+      "hashtags": ["olimpiadas","salud","soccer"],
       "upvotes": 3,
       "downvotes": 10
     },
@@ -99,7 +99,7 @@
       "nombre": "Orlando",
       "comentario": "enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec",
       "fecha": "02/10/2021",
-      "hashtags": "Accounting, Customer Relations, Customer Service, Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 13,
       "downvotes": 6
     },
@@ -107,7 +107,7 @@
       "nombre": "Jonas",
       "comentario": "molestie tortor nibh sit amet orci. Ut",
       "fecha": "24/08/2022",
-      "hashtags": "",
+      "hashtags": ["atleta","running"],
       "upvotes": 6,
       "downvotes": 16
     },
@@ -115,7 +115,7 @@
       "nombre": "Stacey",
       "comentario": "sed pede nec",
       "fecha": "28/01/2022",
-      "hashtags": "Advertising, Finances",
+      "hashtags": ["volleyball","olimpics"],
       "upvotes": 11,
       "downvotes": 15
     },
@@ -123,7 +123,7 @@
       "nombre": "Kyra",
       "comentario": "quis diam luctus lobortis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris",
       "fecha": "23/01/2022",
-      "hashtags": "Quality Assurance, Human Resources",
+      "hashtags": ["brasil","motivation","winner"],
       "upvotes": 7,
       "downvotes": 4
     },
@@ -131,7 +131,7 @@
       "nombre": "Mary",
       "comentario": "elit, dictum eu, eleifend nec, malesuada",
       "fecha": "09/03/2021",
-      "hashtags": "Finances, Public Relations, Asset Management, Research and Development",
+      "hashtags": ["olimpiadas","players","soccer"],
       "upvotes": 3,
       "downvotes": 7
     },
@@ -139,7 +139,7 @@
       "nombre": "Hadley",
       "comentario": "iaculis enim, sit amet ornare lectus justo eu arcu. Morbi sit amet massa. Quisque porttitor eros nec tellus. Nunc",
       "fecha": "17/10/2021",
-      "hashtags": "Asset Management, Research and Development, Sales and Marketing, Customer Service, Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 15,
       "downvotes": 13
     },
@@ -147,7 +147,7 @@
       "nombre": "Whitney",
       "comentario": "Suspendisse non leo. Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce",
       "fecha": "24/11/2020",
-      "hashtags": "Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 9
     },
@@ -155,7 +155,7 @@
       "nombre": "Hilel",
       "comentario": "auctor",
       "fecha": "24/04/2022",
-      "hashtags": "Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 9
     },
@@ -163,7 +163,7 @@
       "nombre": "Brynn",
       "comentario": "Maecenas ornare egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque. Nullam",
       "fecha": "06/09/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 6,
       "downvotes": 16
     },
@@ -171,7 +171,7 @@
       "nombre": "TaShya",
       "comentario": "sagittis. Duis",
       "fecha": "27/04/2021",
-      "hashtags": "Payroll, Tech Support, Media Relations, Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 11,
       "downvotes": 1
     },
@@ -179,7 +179,7 @@
       "nombre": "Jordan",
       "comentario": "aliquam arcu. Aliquam",
       "fecha": "06/10/2020",
-      "hashtags": "Customer Relations, Asset Management, Sales and Marketing, Customer Service, Human Resources",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 2,
       "downvotes": 11
     },
@@ -187,7 +187,7 @@
       "nombre": "Dahlia",
       "comentario": "Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna.",
       "fecha": "14/10/2020",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 13
     },
@@ -195,7 +195,7 @@
       "nombre": "Jonah",
       "comentario": "non, luctus sit amet, faucibus ut, nulla. Cras eu tellus eu augue porttitor interdum. Sed auctor odio a purus.",
       "fecha": "13/02/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 20,
       "downvotes": 4
     },
@@ -203,7 +203,7 @@
       "nombre": "Steel",
       "comentario": "Sed nunc est, mollis non, cursus",
       "fecha": "27/08/2021",
-      "hashtags": "Quality Assurance, Customer Service, Legal Department, Human Resources, Customer Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 18,
       "downvotes": 14
     },
@@ -211,7 +211,7 @@
       "nombre": "Alec",
       "comentario": "felis ullamcorper viverra. Maecenas iaculis aliquet diam. Sed diam lorem, auctor quis, tristique ac,",
       "fecha": "03/07/2021",
-      "hashtags": "Tech Support, Customer Relations, Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 6
     },
@@ -219,7 +219,7 @@
       "nombre": "Alvin",
       "comentario": "Quisque porttitor eros nec tellus.",
       "fecha": "02/10/2020",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 7,
       "downvotes": 18
     },
@@ -227,7 +227,7 @@
       "nombre": "Keegan",
       "comentario": "Nunc ullamcorper, velit in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper",
       "fecha": "24/07/2022",
-      "hashtags": "Advertising",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 9
     },
@@ -235,7 +235,7 @@
       "nombre": "Curran",
       "comentario": "suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum ante ipsum primis in faucibus orci luctus",
       "fecha": "11/12/2020",
-      "hashtags": "Payroll, Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 6,
       "downvotes": 16
     },
@@ -243,7 +243,7 @@
       "nombre": "Raphael",
       "comentario": "auctor. Mauris",
       "fecha": "28/07/2021",
-      "hashtags": "Tech Support, Advertising, Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 20
     },
@@ -251,7 +251,7 @@
       "nombre": "Joseph",
       "comentario": "quis, pede. Suspendisse dui.",
       "fecha": "27/04/2022",
-      "hashtags": "Advertising, Finances, Customer Service, Quality Assurance, Human Resources",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 10
     },
@@ -259,7 +259,7 @@
       "nombre": "Quon",
       "comentario": "ac turpis egestas. Fusce aliquet magna a neque. Nullam ut",
       "fecha": "02/08/2022",
-      "hashtags": "Public Relations, Customer Relations, Accounting",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 6,
       "downvotes": 10
     },
@@ -267,7 +267,7 @@
       "nombre": "Keane",
       "comentario": "In scelerisque scelerisque dui. Suspendisse ac metus vitae velit egestas lacinia. Sed congue, elit sed consequat auctor, nunc nulla vulputate",
       "fecha": "01/05/2022",
-      "hashtags": "Public Relations, Asset Management, Research and Development, Sales and Marketing, Advertising",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 1,
       "downvotes": 15
     },
@@ -275,7 +275,7 @@
       "nombre": "Arsenio",
       "comentario": "Duis ac",
       "fecha": "01/04/2021",
-      "hashtags": "Payroll",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 16
     },
@@ -283,7 +283,7 @@
       "nombre": "Nichole",
       "comentario": "Curabitur egestas nunc sed libero.",
       "fecha": "07/07/2021",
-      "hashtags": "Tech Support, Legal Department, Sales and Marketing, Media Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 17
     },
@@ -291,7 +291,7 @@
       "nombre": "Troy",
       "comentario": "gravida mauris ut mi. Duis risus odio, auctor vitae, aliquet nec,",
       "fecha": "29/05/2022",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 9
     },
@@ -299,7 +299,7 @@
       "nombre": "MacKenzie",
       "comentario": "erat.",
       "fecha": "08/05/2021",
-      "hashtags": "Payroll, Tech Support, Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 8,
       "downvotes": 2
     },
@@ -307,7 +307,7 @@
       "nombre": "Devin",
       "comentario": "nunc id enim. Curabitur massa. Vestibulum accumsan neque et nunc. Quisque ornare tortor at risus. Nunc ac sem ut",
       "fecha": "16/03/2021",
-      "hashtags": "Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 19
     },
@@ -315,7 +315,7 @@
       "nombre": "Angelica",
       "comentario": "eu, euismod ac, fermentum vel, mauris. Integer sem elit, pharetra ut,",
       "fecha": "05/12/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 20,
       "downvotes": 18
     },
@@ -323,7 +323,7 @@
       "nombre": "Adele",
       "comentario": "Nulla facilisi. Sed neque. Sed eget lacus. Mauris non dui nec urna suscipit nonummy. Fusce fermentum fermentum arcu. Vestibulum",
       "fecha": "17/03/2022",
-      "hashtags": "Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 11,
       "downvotes": 9
     },
@@ -331,7 +331,7 @@
       "nombre": "Talon",
       "comentario": "turpis egestas. Aliquam fringilla cursus purus. Nullam scelerisque neque sed sem egestas blandit.",
       "fecha": "19/03/2021",
-      "hashtags": "Accounting, Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 19
     },
@@ -339,7 +339,7 @@
       "nombre": "Xerxes",
       "comentario": "nibh. Donec est mauris, rhoncus",
       "fecha": "09/08/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 17
     },
@@ -347,7 +347,7 @@
       "nombre": "Griffith",
       "comentario": "convallis erat, eget tincidunt dui augue",
       "fecha": "28/12/2021",
-      "hashtags": "Tech Support, Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 11
     },
@@ -355,7 +355,7 @@
       "nombre": "Lyle",
       "comentario": "Nulla aliquet. Proin velit. Sed malesuada augue ut",
       "fecha": "30/12/2021",
-      "hashtags": "Accounting, Human Resources, Research and Development, Customer Service, Quality Assurance",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 14
     },
@@ -363,7 +363,7 @@
       "nombre": "Jackson",
       "comentario": "egestas blandit. Nam nulla magna, malesuada",
       "fecha": "25/05/2021",
-      "hashtags": "Customer Relations, Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 10,
       "downvotes": 19
     },
@@ -371,7 +371,7 @@
       "nombre": "Ciaran",
       "comentario": "convallis erat, eget tincidunt dui augue eu tellus.",
       "fecha": "23/06/2022",
-      "hashtags": "Research and Development, Payroll",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 10
     },
@@ -379,7 +379,7 @@
       "nombre": "Clark",
       "comentario": "mi tempor lorem, eget mollis lectus pede et risus. Quisque libero",
       "fecha": "25/08/2022",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 5
     },
@@ -387,7 +387,7 @@
       "nombre": "Xanthus",
       "comentario": "Cras sed leo. Cras vehicula aliquet libero. Integer",
       "fecha": "11/02/2022",
-      "hashtags": "Finances, Customer Service, Human Resources, Customer Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 9,
       "downvotes": 15
     },
@@ -395,7 +395,7 @@
       "nombre": "Aspen",
       "comentario": "enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut",
       "fecha": "20/04/2021",
-      "hashtags": "Payroll, Customer Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 13,
       "downvotes": 4
     },
@@ -403,7 +403,7 @@
       "nombre": "Nicholas",
       "comentario": "mi felis, adipiscing fringilla, porttitor vulputate, posuere vulputate, lacus. Cras",
       "fecha": "20/03/2022",
-      "hashtags": "Legal Department, Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 8
     },
@@ -411,7 +411,7 @@
       "nombre": "Talon",
       "comentario": "adipiscing non, luctus sit amet, faucibus ut, nulla. Cras eu",
       "fecha": "29/07/2021",
-      "hashtags": "Sales and Marketing, Human Resources, Advertising",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 16
     },
@@ -419,7 +419,7 @@
       "nombre": "Zenia",
       "comentario": "ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend",
       "fecha": "16/04/2021",
-      "hashtags": "Customer Service",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 19,
       "downvotes": 4
     },
@@ -427,7 +427,7 @@
       "nombre": "Reese",
       "comentario": "lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id,",
       "fecha": "29/05/2021",
-      "hashtags": "Sales and Marketing, Asset Management, Customer Relations, Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 8,
       "downvotes": 8
     },
@@ -435,7 +435,7 @@
       "nombre": "Nicole",
       "comentario": "mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut",
       "fecha": "29/08/2022",
-      "hashtags": "Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 20
     },
@@ -443,7 +443,7 @@
       "nombre": "Thaddeus",
       "comentario": "Etiam bibendum",
       "fecha": "15/08/2021",
-      "hashtags": "Tech Support, Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 8
     },
@@ -451,7 +451,7 @@
       "nombre": "Orson",
       "comentario": "Praesent eu nulla at sem molestie sodales. Mauris blandit enim consequat purus. Maecenas libero est,",
       "fecha": "02/10/2020",
-      "hashtags": "Payroll, Public Relations, Customer Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 10
     },
@@ -459,7 +459,7 @@
       "nombre": "Micah",
       "comentario": "in consectetuer ipsum nunc id",
       "fecha": "10/06/2021",
-      "hashtags": "Sales and Marketing, Accounting, Quality Assurance, Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 6,
       "downvotes": 4
     },
@@ -467,7 +467,7 @@
       "nombre": "Alfreda",
       "comentario": "malesuada malesuada. Integer id magna",
       "fecha": "04/10/2020",
-      "hashtags": "Tech Support, Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 19
     },
@@ -475,7 +475,7 @@
       "nombre": "Geraldine",
       "comentario": "dictum eu,",
       "fecha": "06/06/2022",
-      "hashtags": "Public Relations, Asset Management, Finances, Research and Development",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 18
     },
@@ -483,7 +483,7 @@
       "nombre": "Tyler",
       "comentario": "erat, in",
       "fecha": "27/11/2020",
-      "hashtags": "Legal Department, Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 6
     },
@@ -491,7 +491,7 @@
       "nombre": "Alden",
       "comentario": "erat vitae risus. Duis a mi fringilla mi lacinia mattis. Integer",
       "fecha": "09/01/2021",
-      "hashtags": "Media Relations, Customer Relations, Legal Department, Research and Development",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 1
     },
@@ -499,7 +499,7 @@
       "nombre": "Hedley",
       "comentario": "luctus sit amet, faucibus ut, nulla. Cras eu tellus eu",
       "fecha": "25/12/2021",
-      "hashtags": "Advertising, Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 18,
       "downvotes": 14
     },
@@ -507,7 +507,7 @@
       "nombre": "Zenaida",
       "comentario": "et, magna. Praesent",
       "fecha": "29/11/2020",
-      "hashtags": "Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 19
     },
@@ -515,7 +515,7 @@
       "nombre": "Demetrius",
       "comentario": "orci luctus et ultrices posuere",
       "fecha": "18/12/2021",
-      "hashtags": "Customer Relations, Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 18,
       "downvotes": 6
     },
@@ -523,7 +523,7 @@
       "nombre": "Calista",
       "comentario": "egestas ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque neque.",
       "fecha": "13/10/2021",
-      "hashtags": "Advertising",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 15
     },
@@ -531,7 +531,7 @@
       "nombre": "Lucas",
       "comentario": "Donec est mauris, rhoncus id, mollis",
       "fecha": "28/04/2021",
-      "hashtags": "Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 20
     },
@@ -539,7 +539,7 @@
       "nombre": "Yuri",
       "comentario": "a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae",
       "fecha": "27/12/2020",
-      "hashtags": "Customer Service",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 8,
       "downvotes": 7
     },
@@ -547,7 +547,7 @@
       "nombre": "Rina",
       "comentario": "tellus. Phasellus elit pede, malesuada vel,",
       "fecha": "17/10/2021",
-      "hashtags": "Media Relations, Tech Support, Legal Department, Quality Assurance",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 14,
       "downvotes": 5
     },
@@ -555,7 +555,7 @@
       "nombre": "Cameron",
       "comentario": "urna convallis erat, eget tincidunt dui augue eu tellus.",
       "fecha": "16/11/2020",
-      "hashtags": "Public Relations, Media Relations, Human Resources",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 15,
       "downvotes": 16
     },
@@ -563,7 +563,7 @@
       "nombre": "Kiara",
       "comentario": "fames ac turpis egestas. Aliquam fringilla cursus purus. Nullam",
       "fecha": "27/01/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 2,
       "downvotes": 12
     },
@@ -571,7 +571,7 @@
       "nombre": "Demetrius",
       "comentario": "ut mi. Duis risus odio, auctor vitae, aliquet nec, imperdiet nec, leo. Morbi neque tellus, imperdiet non, vestibulum nec,",
       "fecha": "01/10/2021",
-      "hashtags": "Sales and Marketing, Accounting, Customer Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 7,
       "downvotes": 16
     },
@@ -579,7 +579,7 @@
       "nombre": "Theodore",
       "comentario": "nonummy ipsum non arcu. Vivamus sit amet risus. Donec egestas. Aliquam nec",
       "fecha": "12/09/2022",
-      "hashtags": "Accounting, Customer Relations, Legal Department, Advertising, Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 10,
       "downvotes": 5
     },
@@ -587,7 +587,7 @@
       "nombre": "Ethan",
       "comentario": "egestas. Aliquam fringilla cursus purus. Nullam scelerisque neque sed sem egestas blandit. Nam nulla magna, malesuada vel, convallis in,",
       "fecha": "05/08/2022",
-      "hashtags": "Customer Service, Quality Assurance, Finances, Sales and Marketing",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 9,
       "downvotes": 17
     },
@@ -595,7 +595,7 @@
       "nombre": "Ivor",
       "comentario": "imperdiet, erat nonummy ultricies ornare, elit elit fermentum risus, at fringilla",
       "fecha": "16/08/2022",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 18,
       "downvotes": 10
     },
@@ -603,7 +603,7 @@
       "nombre": "Xenos",
       "comentario": "non, lacinia at, iaculis",
       "fecha": "29/11/2021",
-      "hashtags": "Tech Support, Research and Development, Quality Assurance, Human Resources, Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 15,
       "downvotes": 9
     },
@@ -611,7 +611,7 @@
       "nombre": "Summer",
       "comentario": "ligula. Nullam feugiat placerat velit. Quisque varius. Nam porttitor scelerisque",
       "fecha": "05/09/2021",
-      "hashtags": "Public Relations, Research and Development, Human Resources, Tech Support, Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 17,
       "downvotes": 9
     },
@@ -619,7 +619,7 @@
       "nombre": "Nigel",
       "comentario": "eros. Proin ultrices. Duis volutpat nunc sit amet metus. Aliquam erat volutpat. Nulla facilisis. Suspendisse commodo tincidunt nibh. Phasellus nulla.",
       "fecha": "10/07/2022",
-      "hashtags": "Payroll, Human Resources, Legal Department, Accounting",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 1
     },
@@ -627,7 +627,7 @@
       "nombre": "Keegan",
       "comentario": "Cum sociis natoque penatibus",
       "fecha": "10/02/2022",
-      "hashtags": "Sales and Marketing, Research and Development",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 9,
       "downvotes": 6
     },
@@ -635,7 +635,7 @@
       "nombre": "Tyrone",
       "comentario": "eu tempor erat",
       "fecha": "10/10/2021",
-      "hashtags": "Accounting, Media Relations, Advertising, Research and Development",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 20,
       "downvotes": 3
     },
@@ -643,7 +643,7 @@
       "nombre": "Liberty",
       "comentario": "dis parturient montes, nascetur ridiculus mus.",
       "fecha": "12/12/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 18,
       "downvotes": 13
     },
@@ -651,7 +651,7 @@
       "nombre": "Anne",
       "comentario": "urna. Nullam lobortis quam a felis",
       "fecha": "17/01/2022",
-      "hashtags": "Human Resources, Tech Support, Quality Assurance",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 5
     },
@@ -659,7 +659,7 @@
       "nombre": "Valentine",
       "comentario": "dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam auctor, velit eget laoreet posuere,",
       "fecha": "12/06/2022",
-      "hashtags": "Quality Assurance",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 1
     },
@@ -667,7 +667,7 @@
       "nombre": "Mufutau",
       "comentario": "vitae",
       "fecha": "10/04/2021",
-      "hashtags": "Tech Support",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 17
     },
@@ -675,7 +675,7 @@
       "nombre": "Scarlet",
       "comentario": "est ac mattis semper, dui lectus rutrum urna, nec luctus",
       "fecha": "14/11/2021",
-      "hashtags": "Public Relations, Media Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 1,
       "downvotes": 6
     },
@@ -683,7 +683,7 @@
       "nombre": "Risa",
       "comentario": "ac facilisis facilisis, magna tellus faucibus leo, in lobortis tellus justo sit amet nulla. Donec non",
       "fecha": "13/07/2022",
-      "hashtags": "Advertising, Tech Support, Asset Management, Customer Service",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 18
     },
@@ -691,7 +691,7 @@
       "nombre": "Britanney",
       "comentario": "Vivamus nibh dolor, nonummy ac, feugiat non, lobortis quis, pede. Suspendisse dui. Fusce diam nunc, ullamcorper eu, euismod ac,",
       "fecha": "18/10/2020",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 5,
       "downvotes": 1
     },
@@ -699,7 +699,7 @@
       "nombre": "Ross",
       "comentario": "purus ac tellus. Suspendisse sed dolor. Fusce mi lorem, vehicula et, rutrum eu, ultrices sit amet, risus. Donec",
       "fecha": "08/03/2021",
-      "hashtags": "Research and Development, Human Resources",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 2,
       "downvotes": 6
     },
@@ -707,7 +707,7 @@
       "nombre": "Felix",
       "comentario": "Morbi neque tellus, imperdiet non, vestibulum nec, euismod in, dolor. Fusce feugiat. Lorem ipsum dolor sit amet, consectetuer adipiscing",
       "fecha": "23/01/2021",
-      "hashtags": "Accounting, Asset Management, Payroll",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 19
     },
@@ -715,7 +715,7 @@
       "nombre": "Hanae",
       "comentario": "Aliquam erat volutpat. Nulla dignissim. Maecenas ornare egestas ligula. Nullam feugiat",
       "fecha": "20/09/2021",
-      "hashtags": "Public Relations, Legal Department, Customer Relations, Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 4
     },
@@ -723,7 +723,7 @@
       "nombre": "Clarke",
       "comentario": "elit, a feugiat tellus lorem eu metus. In lorem. Donec elementum, lorem ut aliquam iaculis, lacus",
       "fecha": "13/08/2022",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 11,
       "downvotes": 16
     },
@@ -731,7 +731,7 @@
       "nombre": "Clayton",
       "comentario": "quis, tristique ac, eleifend vitae, erat.",
       "fecha": "14/07/2021",
-      "hashtags": "Payroll",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 13,
       "downvotes": 14
     },
@@ -739,7 +739,7 @@
       "nombre": "Maris",
       "comentario": "ante dictum cursus. Nunc mauris elit, dictum eu, eleifend",
       "fecha": "24/09/2020",
-      "hashtags": "Finances, Payroll, Customer Service, Research and Development, Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 2,
       "downvotes": 7
     },
@@ -747,7 +747,7 @@
       "nombre": "Olympia",
       "comentario": "magna, malesuada vel, convallis in, cursus et, eros. Proin ultrices. Duis volutpat nunc sit amet",
       "fecha": "09/04/2021",
-      "hashtags": "Public Relations",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 15,
       "downvotes": 13
     },
@@ -755,7 +755,7 @@
       "nombre": "Kaitlin",
       "comentario": "turpis. In condimentum. Donec at arcu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec",
       "fecha": "25/10/2020",
-      "hashtags": "Media Relations, Asset Management",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 6,
       "downvotes": 15
     },
@@ -763,7 +763,7 @@
       "nombre": "Jeremy",
       "comentario": "magna. Duis dignissim tempor arcu. Vestibulum",
       "fecha": "11/10/2020",
-      "hashtags": "Human Resources, Asset Management, Advertising, Legal Department, Research and Development",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 3,
       "downvotes": 3
     },
@@ -771,7 +771,7 @@
       "nombre": "Pascale",
       "comentario": "vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus",
       "fecha": "13/01/2022",
-      "hashtags": "Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 15
     },
@@ -779,7 +779,7 @@
       "nombre": "Nina",
       "comentario": "Quisque varius. Nam porttitor scelerisque neque. Nullam nisl. Maecenas malesuada fringilla est.",
       "fecha": "02/02/2022",
-      "hashtags": "Legal Department",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 4,
       "downvotes": 7
     },
@@ -787,7 +787,7 @@
       "nombre": "Ocean",
       "comentario": "Duis",
       "fecha": "07/06/2021",
-      "hashtags": "",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 20,
       "downvotes": 1
     },
@@ -795,7 +795,7 @@
       "nombre": "Dora",
       "comentario": "enim. Nunc ut erat. Sed nunc",
       "fecha": "21/05/2021",
-      "hashtags": "Research and Development, Public Relations, Sales and Marketing, Human Resources, Finances",
+      "hashtags": ["olimpiadas","sport","running"],
       "upvotes": 2,
       "downvotes": 5
     }
