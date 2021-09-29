@@ -11,6 +11,8 @@ use diesel::dsl::{delete, insert_into};
 use serde::{Deserialize, Serialize};
 use std::vec::Vec;
 use chrono::NaiveDate;
+use serde_json::{Result as serdeResult, Value};
+use serde_json::json;
 //Pubsub
 use cloud_pubsub::Client;
 use std::sync::Arc;
@@ -64,7 +66,12 @@ pub async fn add_mysql(
         }
     }
     let duration = start.elapsed().as_secs();
-    let t = format!("{},{}:{},{}:{},{}:{}","fuente:api rust google".to_string(), "correctos".to_string(), correctos,"incorrectos".to_string(),incorrectos, "tiempo(s)".to_string(),duration.to_string());
+    let t = json!({
+        "fuente": "api rust google",
+        "correctos": correctos,
+        "incorrectos": incorrectos,
+        "tiempo": duration
+    });
     add_pub(t).await;
         Ok(HttpResponse::Ok
             ().json(Response {
@@ -96,7 +103,13 @@ pub async fn add_mongodb(
        }
     }
     let duration = start.elapsed().as_secs();
-    let t = format!("{},{}:{},{}:{},{}:{}","fuente:api rust cosmosdb".to_string(), "correctos".to_string(), correctos,"incorrectos".to_string(),incorrectos, "tiempo(s)".to_string(),duration.to_string());
+    //let t = format!("{} {},{}:{},{}:{},{}:{} {}","{".to_string(),"fuente:api rust cosmosdb".to_string(), "correctos".to_string(), correctos,"incorrectos".to_string(),incorrectos, "tiempo(s)".to_string(),duration.to_string(),"}".to_string());
+    let t = json!({
+        "fuente": "api rust cosmosdb",
+        "correctos": correctos,
+        "incorrectos": incorrectos,
+        "tiempo": duration
+    });
     add_pub(t).await;
     Ok(HttpResponse::Ok
         ().json(Response {
@@ -106,7 +119,7 @@ pub async fn add_mongodb(
 
 
 pub async fn add_pub(
-    message:String
+    message:serde_json::Value
 ){
     let parsed_env = envy::from_env::<Config>();
     if let Err(e) = parsed_env {
@@ -121,6 +134,7 @@ pub async fn add_pub(
     };
 
     let topic = Arc::new(pubsub.topic(config.topic.clone()));
+    
     match topic.clone().publish(message).await {
         Ok(response) => {
             println!("{:?}", response);

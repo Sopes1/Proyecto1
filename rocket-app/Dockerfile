@@ -20,8 +20,6 @@ COPY src ./src
 
 
 ENV ROCKET_ENV=production
-ENV DATABASE_URL=mysql://root:1234@104.198.201.11/sopesP1
-ENV ROCKET_DATABASES="{ rocket_app = { url = \"$DATABASE_URL\" } , mongo_connection = {url = \"$MONGODB_URL \"}}"
 RUN cargo build --release
 
 
@@ -29,7 +27,6 @@ FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y libmysqlclient-dev build-essential
 RUN apt-get install -y libmariadb-dev
-ENV DATABASE_URL=mysql://root:1234@104.198.201.11/sopesP1
 
 COPY --from=build-container /build/rocket-app/target/release/rocket-app .
 
