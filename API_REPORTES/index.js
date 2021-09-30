@@ -7,10 +7,22 @@ const axios = require('axios')
 
 const app = express()
 
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, { 'cors': { 'methods': ['GET', 'PATCH', 'POST', 'PUT'], 'origin': true} });
+const ioc = require('socket.io-client')
+const socket = ioc.connect('http://localhost:2200', {
+    reconnect: true
+});
+
+
 //MIDLEWARES
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cors())
+
+socket.on('enviarDatos',(data)=>{
+    console.log('Recibido: ' + data)
+})
 
 /* GOOGLE SUBSCRIBER */
 
@@ -20,22 +32,14 @@ const client = new PubSub()
 const messages = []
 
 const messageReader = async message =>{
-    console.log('Mensaje recibido');
-    console.log(`${message.id} - ${message.data}`);
-    console.table(message.attributes);
+    //console.log('Mensaje recibido');
+    //console.log(`${message.id} - ${message.data}`);
+    //console.table(message.attributes);
 
-    messages.push({msg:String(message.data),id:message.id,...message.attributes});
+    messages.push(`${message.data}`/*{msg:String(message.data),id:message.id,...message.attributes}*/);
     message.ack();
 
-    /*try {
-        console.log(`Agregando mensaje al servidor...`);
-        const jsonMessage = JSON.parse(message.data) || {};
-        const request_body = { name: jsonMessage.Name || jsonMessage.name || "Anonimo", msg: jsonMessage.Msg || jsonMessage.msg || "Empty" };
-        await axios.post(process.env.API_URL, request_body);
-    }
-    catch (e) {
-        console.log(`Error al realizar POST ${e.message}`);
-    }*/
+    socket.emit('enviarNotificacion',{datos: message.data})
 }
 
 const notificationListener = () =>{
@@ -46,7 +50,22 @@ const notificationListener = () =>{
 
 /* ------------------ */
 
-const consultaRouter = require('./routes/consulta')
+/* SOCKETS */
+
+io.on('connection',(socket)=>{
+
+    console.log('User Connected')
+    io.socketsJoin('mysql')
+
+    socket.on('enviarNotificacion',(data)=>{
+        socket.broadcast.emit('listener',{datos: data.datos.toString()})
+    })
+
+})
+
+/* -------------------*/
+
+const consultaRouter = require('./routes/consulta');
 app.use('/consulta',consultaRouter)
 
 app.get('/' , (req , res)=>{
@@ -55,7 +74,7 @@ app.get('/' , (req , res)=>{
 
 })
 
-app.listen(port,function(){
+server.listen(port,function(){
     console.log('Corriendo en el puerto ' + port)
     notificationListener();
 })

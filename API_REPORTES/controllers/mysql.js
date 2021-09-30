@@ -1,11 +1,24 @@
 const sql = require("../config/dbMysql")
 
 exports.getAll = async(req,res) => {
+    console.log('Obteniendo datos')
     sql.query('Select * from comentarios;',(err,result)=>{
         if(err){
             return res.status(400).json({error:err})
         }else{
             return res.status(200).send(result)
+        }
+    })
+}
+
+exports.getMessages = async() =>{
+    console.log('Obteniendo Mensajes')
+    sql.query('Select * from comentarios;',(err,result)=>{
+        if(err){
+            return -1
+        }else{
+            console.log('Retorno')
+            return result
         }
     })
 }
@@ -100,5 +113,19 @@ exports.votos = async(req,res)=>{
                             return res.status(404).send({error:err})
                         
                         return res.send(result)
+                    })
+}
+
+exports.getLastst = async(req,res)=>{
+    sql.query(`Select * from comentarios 
+	            Order By id_comentario desc
+		            limit 10;`,(err,result)=>{
+
+                        if(err){
+                            return res.status(404).send({error:err})
+                        }else{
+                            return res.send(result)
+                        }
+
                     })
 }
