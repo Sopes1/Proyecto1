@@ -220,7 +220,7 @@ func insertDataMysql(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 	tiempo := time.Since(start).Seconds()
-	publish("{guardados: " + strconv.Itoa(correctos) + ", api: 'golang', tiempoDeCarga: " + fmt.Sprint(tiempo) + ", bd: 'MySQL'}")
+	publish("{\"guardados\": " + strconv.Itoa(correctos) + ", \"api\": \"golang\", \"tiempoDeCarga\": " + fmt.Sprint(tiempo) + ", \"bd\": \"MySQL\"}")
 	fmt.Println("Termina Mysql")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
 	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
@@ -254,7 +254,7 @@ func insertDataMongo(w http.ResponseWriter, req *http.Request) {
 		}
 	}
 	tiempo := time.Since(start).Seconds()
-	publish("{guardados: " + strconv.Itoa(correctos) + ", api: 'golang', tiempoDeCarga: " + fmt.Sprint(tiempo) + ", bd: 'CosmosDB'}")
+	publish("{\"guardados\": " + strconv.Itoa(correctos) + ", \"api\": \"golang\", \"tiempoDeCarga\": " + fmt.Sprint(tiempo) + ", \"bd\": \"CosmosDB\"}")
 	fmt.Println("Termina Mongo")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
 	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
