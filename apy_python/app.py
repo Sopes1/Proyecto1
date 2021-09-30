@@ -85,8 +85,8 @@ def insert_mysql():  # put application's code here
     payload = {"guardados": correctos, "api": "python", "TiempoDeCarga":tiempoTotal, "bd":"Mysql"}
     print(f"Sending payload: {payload}.")
     push_payload(payload, PUB_SUB_TOPIC, PUB_SUB_PROJECT)
-    return '''
-              '''
+    response={"BD":"mysql","Correctos":correctos,"Incorrectos":incorrectos ,"Tiempo":tiempoTotal}
+    return response
 
 @app.route('/python/publicar/mongodb', methods=['POST'])
 def insert_mongodb():  # put application's code here
@@ -105,9 +105,8 @@ def insert_mongodb():  # put application's code here
     tiempoTotal = round(fin-inicio, 2)
     payload = {"guardados": correctos, "api": "python", "TiempoDeCarga": tiempoTotal, "bd": "MongoDb"}
     print(f"Sending payload: {payload}.")
-    push_payload(payload, PUB_SUB_TOPIC, PUB_SUB_PROJECT)
-    return '''
-              '''
+    response = {"BD": "mongodb", "Correctos": correctos, "Incorrectos": incorrectos, "Tiempo": tiempoTotal}
+    return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
