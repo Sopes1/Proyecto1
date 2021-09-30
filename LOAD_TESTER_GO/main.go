@@ -11,10 +11,8 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
-	"math/rand"
 	"net/http"
 	"strconv"
-	"time"
 )
 
 const (
@@ -67,7 +65,13 @@ func showPrincipal() {
 		break
 	case "2":
 		fmt.Print("\033[H\033[2J")
-		showSelectApi()
+		if comentarios != nil {
+			showSelectApi()
+		} else {
+			fmt.Print("No se ha cargado ningun archivo")
+			reader.ReadString('\n')
+		}
+		showPrincipal()
 		break
 	case "3":
 		printFile()
@@ -165,21 +169,21 @@ func EnviarTrafico(api int) {
 
 	}
 
-	var jsonData []Data
+	// var jsonData []Data
 
-	fmt.Print("Cantidad De Archivos A Enviar: ")
-	var nDatos int
-	fmt.Scanf("%d", &nDatos)
+	// fmt.Print("Cantidad De Archivos A Enviar: ")
+	// var nDatos int
+	// fmt.Scanf("%d", &nDatos)*/
 
-	rand.Seed(time.Now().UnixNano())
-	for i := 0; i < nDatos; i++ {
-		jsonData = append(jsonData, comentarios[rand.Intn(len(comentarios))])
-	}
+	// rand.Seed(time.Now().UnixNano())
+	// for i := 0; i < nDatos; i++ {
+	// 	jsonData = append(jsonData, comentarios[rand.Intn(len(comentarios))])
+	// }
 
 	var bodyMysql, bodyMongo RequestInfo
 
 	fmt.Println("Enviando Data A Mysql")
-	responseMysql := sendJsonData("/mysql", jsonData, url)
+	responseMysql := sendJsonData("/mysql", comentarios, url)
 	json.Unmarshal(responseMysql, &bodyMysql)
 	fmt.Println("=============Datos Mysql=============")
 	fmt.Print("BD: ")
@@ -193,7 +197,7 @@ func EnviarTrafico(api int) {
 	fmt.Println("=====================================")
 
 	fmt.Println("Enviando Data A Mongo")
-	responseMongo := sendJsonData("/mongo", jsonData, url)
+	responseMongo := sendJsonData("/mongo", comentarios, url)
 	json.Unmarshal(responseMongo, &bodyMongo)
 	fmt.Println("=============Datos Mongo=============")
 	fmt.Print("BD: ")
