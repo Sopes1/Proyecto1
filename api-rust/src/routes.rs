@@ -26,7 +26,7 @@ struct Config {
 pub async fn add_mysql(
     db: web::Data<Pool>,
     arreglo_comentarios: web::Json<Vec<User>>,
-) -> Result<HttpResponse,Error>  {
+) -> HttpResponse  {
     let mut correctos = 0;
     let mut incorrectos = 0;
     let start = Instant::now();
@@ -73,16 +73,19 @@ pub async fn add_mysql(
         "tiempo": duration
     });
     add_pub(t).await;
-        Ok(HttpResponse::Ok
-            ().json(Response {
-            respuesta:"jala".to_string(),
-        }))     
+    let respuesta = json!({
+        "BD": "api rust google",
+        "Correctos": correctos,
+        "Incorrectos": incorrectos,
+        "Tiempo": duration
+    });
+    HttpResponse::Ok().body(respuesta.to_string())
 }
 
 pub async fn add_mongodb(
     db: web::Data<TodoManager>,
     arreglo_comentarios: web::Json<Vec<User>>,
-) -> Result<HttpResponse,Error>  {
+) -> HttpResponse  {
     let mut correctos = 0;
     let mut incorrectos =0;
     let start = Instant::now();
@@ -111,10 +114,13 @@ pub async fn add_mongodb(
         "tiempo": duration
     });
     add_pub(t).await;
-    Ok(HttpResponse::Ok
-        ().json(Response {
-        respuesta:"jala".to_string(),
-    })) 
+    let respuesta = json!({
+        "BD": "api rust google",
+        "Correctos": correctos,
+        "Incorrectos": incorrectos,
+        "Tiempo": duration
+    });
+    HttpResponse::Ok().body(respuesta.to_string())
 }
 
 
