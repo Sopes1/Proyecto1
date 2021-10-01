@@ -16,8 +16,9 @@ import (
 )
 
 const (
-	host = "http://localhost"
-	port = ":3000"
+	host = "http://localhost:3000"
+	//port = ":3000"
+
 )
 
 type Comentarios struct {
@@ -159,13 +160,13 @@ func EnviarTrafico(api int) {
 
 	switch api {
 	case 1:
-		url = host + port + "/python/publicar"
+		url = host /*+ port*/ + "/python/publicar"
 		break
 	case 2:
-		url = host + port + "/golang/publicar"
+		url = host /*+ port */ + "/golang/publicar"
 		break
 	case 3:
-		url = host + port + "/rust/publicar"
+		url = host /*+ port */ + "/rust/publicar"
 
 	}
 
@@ -197,7 +198,7 @@ func EnviarTrafico(api int) {
 	fmt.Println("=====================================")
 
 	fmt.Println("Enviando Data A Mongo")
-	responseMongo := sendJsonData("/mongo", comentarios, url)
+	responseMongo := sendJsonData("/mongodb", comentarios, url)
 	json.Unmarshal(responseMongo, &bodyMongo)
 	fmt.Println("=============Datos Mongo=============")
 	fmt.Print("BD: ")
