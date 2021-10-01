@@ -46,7 +46,6 @@ type Data struct {
 }
 
 type RequestInfo struct {
-	Nombre      string  //Nombre de la base de datos de donde es la informacion
 	Correctos   int     //Numero de peticiones correctas
 	Incorrectos int     //Numero de peticiones incorrectas
 	Tiempo      float64 //Tiempo que tardo en ejecutarse la peticion
@@ -63,6 +62,10 @@ type Health struct {
 	Status int
 }
 
+type Error struct {
+	Error error
+}
+
 func main() {
 
 	router := mux.NewRouter()
@@ -71,7 +74,7 @@ func main() {
 	//Ruta para insertar en mysql
 	router.HandleFunc("/golang/publicar/mysql", insertDataMysql).Methods("POST")
 	//Ruta para insertar en mongo
-	router.HandleFunc("/golang/publicar/mongo", insertDataMongo).Methods("POST")
+	router.HandleFunc("/golang/publicar/mongodb", insertDataMongo).Methods("POST")
 	//Iniciando API
 	log.Fatal(http.ListenAndServe(":3000", router))
 
@@ -94,11 +97,11 @@ func goDotEnvVariable(key string) string {
 func publish(msg string) error {
 	// Definimos el ProjectID del proyecto
 	// Este dato lo sacamos de Google Cloud
-	projectID := goDotEnvVariable("PROJECT_ID")
+	projectID := "abiding-circle-325403" //goDotEnvVariable("PROJECT_ID")
 
 	// Definimos el TopicId del proyecto
 	// Este dato lo sacamos de Google Cloud
-	topicID := goDotEnvVariable("TOPIC_ID")
+	topicID := "sopesp1" //goDotEnvVariable("TOPIC_ID")
 
 	// Definimos el contexto en el que ejecutaremos PubSub
 	ctx := context.Background()
@@ -106,7 +109,8 @@ func publish(msg string) error {
 	client, err := pubsub.NewClient(ctx, projectID)
 	// Si un error ocurrio creando el nuevo cliente, entonces imprimimos un error y salimos
 	if err != nil {
-		fmt.Println("error")
+		fmt.Println("error aqui")
+		fmt.Println(err)
 		return fmt.Errorf("pubsub.NewClient: %v", err)
 	}
 
@@ -243,11 +247,20 @@ func insertDataMongo(w http.ResponseWriter, req *http.Request) {
 	}
 
 	start := time.Now()
+	clientOptions := options.Client().ApplyURI(URI)
+
+	client, err := mongo.Connect(context.TODO(), clientOptions)
+	if err != nil {
+		fmt.Println("Mongo.connect() ERROR: ", err)
+		json.NewEncoder(w).Encode(Error{Error: err})
+	}
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+
+	col := client.Database("Proyecto1Sopes").Collection("Comentarios")
 
 	for _, data := range dato {
-		response := newDataMongo(data)
-
-		if response == true {
+		_, insertErr := col.InsertOne(ctx, data)
+		if insertErr == nil {
 			correctos = correctos + 1
 		} else {
 			incorrectos = incorrectos + 1
@@ -257,6 +270,7 @@ func insertDataMongo(w http.ResponseWriter, req *http.Request) {
 	publish("{\"guardados\": " + strconv.Itoa(correctos) + ", \"api\": \"golang\", \"tiempoDeCarga\": " + fmt.Sprint(tiempo) + ", \"bd\": \"CosmosDB\"}")
 	fmt.Println("Termina Mongo")
 	//return RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: time.Since(start).Seconds()}
+	defer cancel()
 	json.NewEncoder(w).Encode(RequestInfo{Correctos: correctos, Incorrectos: incorrectos, Tiempo: tiempo})
 }
 
