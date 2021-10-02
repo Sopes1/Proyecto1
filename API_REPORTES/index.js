@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const port = 2200;
+const port = 8080;
 
 const { PubSub } = require('@google-cloud/pubsub')
 const axios = require('axios')
@@ -8,9 +8,9 @@ const axios = require('axios')
 const app = express()
 
 const server = require('http').createServer(app);
-const io = require('socket.io')(server, { 'cors': { 'methods': ['GET', 'PATCH', 'POST', 'PUT'], 'origin': true} });
+const io = require('socket.io')(server, { 'cors': { 'methods': ['GET', 'PATCH', 'POST', 'PUT'], 'origin': '*'} });
 const ioc = require('socket.io-client')
-const socket = ioc.connect('http://localhost:2200', {
+const socket = ioc.connect('https://abiding-circle-325403.uc.r.appspot.com/', {
     reconnect: true
 });
 
@@ -37,7 +37,7 @@ const messageReader = async message =>{
     //console.table(message.attributes);
 
     messages.push(`${message.data}`/*{msg:String(message.data),id:message.id,...message.attributes}*/);
-    message.ack();
+    //message.ack();
 
     socket.emit('enviarNotificacion',{datos: message.data})
 }
