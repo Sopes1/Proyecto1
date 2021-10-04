@@ -11,8 +11,10 @@ import (
 	"bytes"
 	"encoding/json"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 const (
@@ -41,6 +43,14 @@ type RequestInfo struct {
 	Tiempo      float64 //Tiempo que tardo en ejecutarse la peticion
 }
 
+var rutas = [3]string{"/run", "/function", ""}
+
+var apis = [3]string{"golang", "python", "rust"}
+
+//random <- return num
+// rutas[random]
+// rutas[random]+/+path
+
 var reader = bufio.NewReader(os.Stdin)
 
 var comentarios []Data
@@ -50,6 +60,7 @@ func main() {
 }
 
 func showPrincipal() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("###############-LOAD TESTER-###############")
 	fmt.Println("1. Cargar Archivo")
 	fmt.Println("2. Enviar Tráfico")
@@ -83,15 +94,18 @@ func showPrincipal() {
 	default:
 		fmt.Print("\033[H\033[2J")
 		showPrincipal()
+		return
 	}
 }
 
 func showSelectApi() {
+	fmt.Print("\033[H\033[2J")
 	fmt.Println("###############-Seleccionar Api-############")
 	fmt.Println("1. Python")
 	fmt.Println("2. Golang")
 	fmt.Println("3. Rust")
-	fmt.Println("4. Regresar")
+	fmt.Println("4. Aleatorio")
+	fmt.Println("5. Regresar")
 
 	res, _ := reader.ReadString('\n')
 
@@ -115,10 +129,17 @@ func showSelectApi() {
 		break
 	case "4":
 		fmt.Print("\033[H\033[2J")
-		showPrincipal()
+		EnviarTrafico(4)
+		reader.ReadLine()
+		showSelectApi()
+		break
+	case "5":
+		fmt.Print("\033[H\033[2J")
+		break
 	default:
 		fmt.Print("\033[H\033[2J")
 		showSelectApi()
+		break
 	}
 
 }
@@ -154,19 +175,29 @@ func EnviarTrafico(api int) {
 	api = 1 = Python
 	api = 2 = Golang
 	api = 3 = Rust
+	api = 4 = Aleatorio
 	*/
 
 	var url string
+	rand.Seed(time.Now().UnixNano())
+	var randomApi = rand.Intn(3)
+
+	rand.Seed(time.Now().UnixNano())
+	var randomApp = rand.Intn(3)
 
 	switch api {
 	case 1:
-		url = host /*+ port*/ + "/python/publicar"
+		url = host + rutas[randomApp] + "/python/publicar"
 		break
 	case 2:
-		url = host /*+ port */ + "/golang/publicar"
+		url = host + rutas[randomApp] + "/golang/publicar"
 		break
 	case 3:
-		url = host /*+ port */ + "/rust/publicar"
+		url = host + rutas[randomApp] + "/rust/publicar"
+		break
+	case 4:
+		rand.Seed(time.Now().UnixNano())
+		url = host + rutas[randomApp] + "/" + apis[randomApi] + "/publicar"
 
 	}
 
@@ -182,7 +213,9 @@ func EnviarTrafico(api int) {
 	// }
 
 	var bodyMysql, bodyMongo RequestInfo
-
+	fmt.Println("======================================")
+	fmt.Println("Ruta: " + url)
+	fmt.Println("======================================")
 	fmt.Println("Enviando Data A Mysql")
 	responseMysql := sendJsonData("/mysql", comentarios, url)
 	json.Unmarshal(responseMysql, &bodyMysql)
