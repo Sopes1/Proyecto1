@@ -60,12 +60,12 @@ def showSelectApi():
         showSelectApi()
     elif res == 2:
         print("\033[H\033[2J")
-        #EnviarTrafico(2)
+        EnviarTrafico(2)
         print("\033[H\033[2J")
         showSelectApi()
     elif res == 3:
         print("\033[H\033[2J")
-        #EnviarTrafico(3)
+        EnviarTrafico(3)
         print("\033[H\033[2J")
         showSelectApi()
     elif res == 4:
@@ -76,15 +76,20 @@ def showSelectApi():
         showSelectApi()
 
 def EnviarTrafico(api):
-    host = "http://localhost"
+    host = "https://apipython-ra554lko4a-uc.a.run.app"
     port = ":5000"
     url=""
+    rutas=["/function","/run",""]
     if api == 1:
-        url = host + port + "/python/publicar"
+        ruta = rutas[random.randrange(0,len(rutas))]
+        print(ruta)
+        url = host + ruta+"/python/publicar"
     elif api == 2:
-        url = host + port + "/golang/publicar"
+        ruta = rutas[random.randrange(0, len(rutas))]
+        print(ruta)
+        url = host+ ruta+ "/golang/publicar"
     elif api==3:
-        url = host + port + "/rust/publicar"
+        url = host+ "/rust/publicar"
     jsonData = []
     cantidadArchivos = int(input("Cantidad de archivos a enviar: "))
     for i in range(cantidadArchivos):
@@ -96,8 +101,6 @@ def EnviarTrafico(api):
     response = requests.post(url+"/mysql", data=json.dumps(jsonData), headers=headers)
     respuesta = response.json()
     print("=============Datos Mysql=============")
-    print("BD: ")
-    print(respuesta["BD"])
     print("Correctos: ")
     print(respuesta["Correctos"])
     print("Incorrectos: ")
@@ -107,12 +110,11 @@ def EnviarTrafico(api):
     print("=====================================")
     print("Enviando a MongoDb")
     print(url)
+
     headers = {"Content-Type": "application/json"}
     response = requests.post(url + "/mongodb", data=json.dumps(jsonData), headers=headers)
     respuesta = response.json()
     print("=============Datos MongoDb=============")
-    print("BD: ")
-    print(respuesta["BD"])
     print("Correctos: ")
     print(respuesta["Correctos"])
     print("Incorrectos: ")
@@ -120,7 +122,6 @@ def EnviarTrafico(api):
     print("Tiempo: ")
     print(respuesta["Tiempo"])
     print("=====================================")
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     showPrincipal()
