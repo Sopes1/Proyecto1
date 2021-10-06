@@ -76,8 +76,7 @@ def showSelectApi():
         showSelectApi()
 
 def EnviarTrafico(api):
-    host = "https://apipython-ra554lko4a-uc.a.run.app"
-    port = ":5000"
+    host = "http://34.149.252.7:80"
     url=""
     rutas=["/function","/run",""]
     if api == 1:
@@ -101,12 +100,15 @@ def EnviarTrafico(api):
     response = requests.post(url+"/mysql", data=json.dumps(jsonData), headers=headers)
     respuesta = response.json()
     print("=============Datos Mysql=============")
-    print("Correctos: ")
-    print(respuesta["Correctos"])
-    print("Incorrectos: ")
-    print(respuesta["Incorrectos"])
-    print("Tiempo: ")
-    print(respuesta["Tiempo"])
+    try:
+        print("Correctos: ")
+        print(respuesta["Correctos"])
+        print("Incorrectos: ")
+        print(respuesta["Incorrectos"])
+        print("Tiempo: ")
+        print(respuesta["Tiempo"])
+    except:
+        print("Respuesta en formato incorrecto")
     print("=====================================")
     print("Enviando a MongoDb")
     print(url)
@@ -115,12 +117,15 @@ def EnviarTrafico(api):
     response = requests.post(url + "/mongodb", data=json.dumps(jsonData), headers=headers)
     respuesta = response.json()
     print("=============Datos MongoDb=============")
-    print("Correctos: ")
-    print(respuesta["Correctos"])
-    print("Incorrectos: ")
-    print(respuesta["Incorrectos"])
-    print("Tiempo: ")
-    print(respuesta["Tiempo"])
+    try:
+        print("Correctos: ")
+        print(respuesta["Correctos"])
+        print("Incorrectos: ")
+        print(respuesta["Incorrectos"])
+        print("Tiempo: ")
+        print(respuesta["Tiempo"])
+    except:
+        print("Respuesta en formato incorrecto")
     print("=====================================")
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
